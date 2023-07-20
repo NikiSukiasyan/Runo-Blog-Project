@@ -4,8 +4,9 @@ import FirstBanner from "../images/FirstBanner.png";
 import SecondBanner from "../images/SecondBanner.png";
 import ThirdBanner from "../images/ThirdBanner.png";
 import "./Home.scss";
+import Main from "../components/main/Main";
 
-function Main() {
+function Home() {
   const [currentImage, setCurrentImage] = useState(FirstBanner);
 
   const handleDotClick = (image) => {
@@ -49,8 +50,9 @@ function Main() {
           </div>
         </div>
       </div>
+      <Main />
     </>
   );
 }
 
-export default Main;
+export default Home;
