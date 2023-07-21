@@ -5,6 +5,7 @@ import SecondBanner from "../images/SecondBanner.png";
 import ThirdBanner from "../images/ThirdBanner.png";
 import "./Home.scss";
 import Main from "../components/main/Main";
+import Footer from "../components/footer/Footer";
 
 function Home() {
   const [currentImage, setCurrentImage] = useState(FirstBanner);
@@ -51,6 +52,7 @@ function Home() {
         </div>
       </div>
       <Main />
+      <Footer />
     </>
   );
 }

@@ -1,0 +1,100 @@
+footer {
+  height: 400px;
+  background-color: rgba(33, 37, 41, 1);
+  max-width: 100%;
+  margin-top: 140px;
+  .footer-container {
+    .contact-container {
+      display: grid;
+      gap: 18px;
+      p {
+        color: #fff;
+        font-family: "Lora";
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 700;
+        margin-top: 105px;
+        margin-left: 70px;
+      }
+      span {
+        color: #e5e5e5;
+        font-family: "Lora";
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        width: 184px;
+        margin-left: 70px;
+      }
+    }
+    .explore-container {
+      display: grid;
+      gap: 20px;
+      margin-top: -102px;
+      margin-left: -244px;
+      p {
+        color: #fff;
+        font-family: "Lora";
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 700;
+        width: 130px;
+      }
+      span {
+        color: #e5e5e5;
+        font-family: "Lora";
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        width: 126px;
+      }
+    }
+    .adress {
+      display: grid;
+      gap: 16px;
+      display: grid;
+      gap: 16px;
+      margin-left: 425px;
+      margin-top: -224px;
+      p {
+        color: #fff;
+        font-family: "Lora";
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 700;
+        width: 147px;
+      }
+      span {
+        color: #e5e5e5;
+        font-family: "Lora";
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
+        width: 143px;
+      }
+    }
+    .connections {
+      display: grid;
+      margin-left: 957px;
+      margin-top: -105px;
+      gap: 16px;
+      p {
+        color: #fff;
+        font-family: "Lora";
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 700;
+      }
+      div {
+        display: flex;
+        gap: 26px;
+        width: 135px;
+        img {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

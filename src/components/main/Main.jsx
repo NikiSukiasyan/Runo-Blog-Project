@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import { getDatabase, ref, onValue } from "firebase/database";
 import "./Main.scss";
 import app from "../../FireBase";
+import LoadingIcon from "../../images/loadingicon.jpeg";
 
 function Main() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [articles, setArticles] = useState([]);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
 
   const handleCategoryClick = (category) => {
     setActiveCategory((prevCategory) =>
@@ -31,6 +33,10 @@ function Main() {
     activeCategory === "All"
       ? articles
       : articles.filter((article) => article.type === activeCategory);
+
+  const handleAllImagesLoaded = () => {
+    setImagesLoaded(true);
+  };
 
   return (
     <>
@@ -73,10 +79,19 @@ function Main() {
           Branding
         </li>
       </ul>
+      <p className="view-all">View All</p>
       <div className="articles-container">
         {filteredArticles.slice(0, 8).map((article) => (
           <div className="article" key={article.id}>
-            <img src={article.image} className="blog-item" />
+            {!imagesLoaded && (
+              <img src={LoadingIcon} className="blog-item" alt="Loading Icon" />
+            )}
+            <img
+              src={article.image}
+              className={`blog-item ${imagesLoaded ? "loaded" : "hidden"}`}
+              onLoad={handleAllImagesLoaded}
+              alt={article.title}
+            />
             <div className="blog-type">
               <p>{article.type}</p>
             </div>
