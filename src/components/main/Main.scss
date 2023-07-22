@@ -43,6 +43,18 @@
   row-gap: 45px;
   column-gap: 50px;
 }
+.no-results {
+  p {
+    color: #6c757d;
+    font-family: "Lora";
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    width: 318px;
+    margin-left: -37px;
+  }
+}
 .article {
   position: relative;
   span {

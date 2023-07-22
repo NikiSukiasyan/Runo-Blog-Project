@@ -1,11 +1,15 @@
-.error-image {
-  max-width: 100%;
-  margin-left: 280px;
-  height: 484px;
-}
-.error-type {
-  margin-left: 32%;
-  font-size: 41px;
-  font-family: "Roboto";
-  margin-top: 30px;
+.error-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  .error-image {
+    max-width: 100%;
+    height: 484px;
+  }
+  .error-type {
+    font-size: 41px;
+    font-family: "Roboto";
+    margin-top: 30px;
+  }
 }

@@ -7,6 +7,7 @@ import PinterestIcon from "../../images/pinterest.svg";
 import BehanceIcon from "../../images/behance.svg";
 import SearchIcon from "../../images/SearchIcon.svg";
 import { Link } from "react-router-dom";
+import Articles from "../../pages/Articles";
 
 function Header() {
   const openSocialMediaLink = (url) => {
@@ -16,14 +17,18 @@ function Header() {
   return (
     <div className="header-container">
       <header>
-        <Link to="/">
+        <Link to="/" className="title-link">
           <h1>RUNO</h1>
         </Link>
         <div className="navigation-container">
           <nav>
             <ul>
-              <li>Home</li>
-              <li>Articles</li>
+              <Link to="/">
+                <li>Home</li>
+              </Link>
+              <Link to="/Articles">
+                <li>Articles</li>
+              </Link>
             </ul>
             <div className="icon-container">
               <img

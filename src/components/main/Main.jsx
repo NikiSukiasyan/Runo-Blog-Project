@@ -3,11 +3,10 @@ import { getDatabase, ref, onValue } from "firebase/database";
 import "./Main.scss";
 import app from "../../FireBase";
 import LoadingIcon from "../../images/loadingicon.jpeg";
+import { useArticlesContext } from "../../ArticlesContext";
 
-function Main() {
+export const useActiveCategory = () => {
   const [activeCategory, setActiveCategory] = useState("All");
-  const [articles, setArticles] = useState([]);
-  const [imagesLoaded, setImagesLoaded] = useState(false);
 
   const handleCategoryClick = (category) => {
     setActiveCategory((prevCategory) =>
@@ -15,28 +14,67 @@ function Main() {
     );
   };
 
+  return { activeCategory, handleCategoryClick };
+};
+
+function Main() {
+  const { activeCategory, handleCategoryClick } = useActiveCategory();
+  const { articles } = useArticlesContext();
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+
+  const [firstEightArticles, setFirstEightArticles] = useState([]);
+
   useEffect(() => {
     const fetchData = async () => {
       const dbRef = ref(getDatabase());
       onValue(dbRef, (snapshot) => {
         const data = snapshot.val();
         if (data && Array.isArray(data)) {
-          setArticles(data);
+          const filteredArticles =
+            activeCategory === "All"
+              ? data
+              : data.filter((article) => article.type === activeCategory);
+
+          const firstEight = filteredArticles.slice(0, 8);
+          setFirstEightArticles(firstEight);
         }
       });
     };
 
     fetchData();
-  }, []);
-
-  const filteredArticles =
-    activeCategory === "All"
-      ? articles
-      : articles.filter((article) => article.type === activeCategory);
+  }, [activeCategory]);
 
   const handleAllImagesLoaded = () => {
     setImagesLoaded(true);
   };
+
+  const renderArticles = firstEightArticles.length ? (
+    firstEightArticles.map((article) => (
+      <div className="article" key={article.id}>
+        {!imagesLoaded && (
+          <img src={LoadingIcon} className="blog-item" alt="Loading Icon" />
+        )}
+        <img
+          src={article.image}
+          className={`blog-item ${imagesLoaded ? "loaded" : "hidden"}`}
+          onLoad={handleAllImagesLoaded}
+          alt={article.title}
+        />
+        <div className="blog-type">
+          <p>{article.type}</p>
+        </div>
+        <span>{article.date}</span>
+        <div>
+          <p className="title">{article.title}</p>
+          <span className="description">{article.description}</span>
+        </div>
+      </div>
+    ))
+  ) : (
+    <div className="no-results">
+      <p>No Results Found :(</p>
+    </div>
+  );
 
   return (
     <>
@@ -80,29 +118,7 @@ function Main() {
         </li>
       </ul>
       <p className="view-all">View All</p>
-      <div className="articles-container">
-        {filteredArticles.slice(0, 8).map((article) => (
-          <div className="article" key={article.id}>
-            {!imagesLoaded && (
-              <img src={LoadingIcon} className="blog-item" alt="Loading Icon" />
-            )}
-            <img
-              src={article.image}
-              className={`blog-item ${imagesLoaded ? "loaded" : "hidden"}`}
-              onLoad={handleAllImagesLoaded}
-              alt={article.title}
-            />
-            <div className="blog-type">
-              <p>{article.type}</p>
-            </div>
-            <span>{article.date}</span>
-            <div>
-              <p className="title">{article.title}</p>
-              <span className="description">{article.description}</span>
-            </div>
-          </div>
-        ))}
-      </div>
+      <div className="articles-container">{renderArticles}</div>
     </>
   );
 }

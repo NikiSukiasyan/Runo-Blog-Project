@@ -4,7 +4,7 @@ import "./Error.scss";
 
 function Error() {
   return (
-    <div>
+    <div className="error-container">
       <h1 className="error-type">404 Error Page Not Found</h1>
       <img src={ErrorImage} alt="Error Image" className="error-image" />
     </div>

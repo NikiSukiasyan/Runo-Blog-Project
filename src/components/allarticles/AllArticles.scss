@@ -1,0 +1,124 @@
+.whole-articles-container {
+  margin-top: 28px;
+  margin-right: 85px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(283px, 0.3fr));
+  row-gap: 45px;
+}
+.every-article {
+  position: relative;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 310px;
+  height: 567px;
+  margin-top: 25px;
+  margin-left: 71px;
+  border-radius: 5px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 486px;
+    left: 9px;
+    height: 0.9px;
+    background-color: #e5e5e5;
+    width: 285.996px;
+  }
+  .every-title {
+    color: #495057;
+    font-family: "Lora";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 25px;
+    width: 300px;
+    margin-left: 15px;
+  }
+  span {
+    display: flex;
+    margin-top: 15px;
+    padding-bottom: 15px;
+    color: #6c757d;
+    font-family: "Lora";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-left: 15px;
+
+    &.every-description {
+      color: #6c757d;
+      font-family: "Lora";
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 20px;
+      width: 290px;
+      margin-left: 15px;
+    }
+  }
+}
+
+.title {
+  color: #495057;
+  font-family: "Lora";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 25px;
+  width: 310px;
+  margin-left: 0px;
+  margin-left: 15px;
+}
+
+.blog-type {
+  width: 77px;
+  height: 24px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  position: absolute;
+  top: 26px;
+  left: 213px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  p {
+    color: #fff;
+    text-align: center;
+    font-family: "Roboto";
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    z-index: 3;
+  }
+}
+
+.profile-information-container {
+  margin-top: 12px;
+  margin-left: 15px;
+  img {
+    margin-left: 0px;
+    width: 50px;
+    height: 50px;
+  }
+  .job-information {
+    margin-left: 71px;
+    margin-top: -50px;
+    width: 310px;
+
+    p {
+      color: #495057;
+      font-family: "Lora";
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 25px;
+      width: 310px;
+    }
+    span {
+      width: 112px;
+      margin-left: 1px;
+      margin-top: 9px;
+    }
+  }
+}
