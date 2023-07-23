@@ -1,9 +1,23 @@
 .whole-articles-container {
   margin-top: 28px;
-  margin-right: 85px;
+  margin-right: 125px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(283px, 0.3fr));
+  grid-template-columns: repeat(auto-fit, minmax(283px, 0.24fr));
   row-gap: 45px;
+  column-gap: 50px;
+  margin-left: -25px;
+}
+.all-articles-no-results {
+  p {
+    margin-left: 97px;
+    color: #6c757d;
+    font-family: "Lora";
+    font-size: 25px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    width: 318px;
+  }
 }
 .every-article {
   position: relative;
@@ -30,7 +44,7 @@
     font-style: normal;
     font-weight: 700;
     line-height: 25px;
-    width: 300px;
+    width: 290px;
     margin-left: 15px;
   }
   span {
@@ -104,8 +118,7 @@
   .job-information {
     margin-left: 71px;
     margin-top: -50px;
-    width: 310px;
-
+    width: 210px;
     p {
       color: #495057;
       font-family: "Lora";
@@ -113,7 +126,6 @@
       font-style: normal;
       font-weight: 700;
       line-height: 25px;
-      width: 310px;
     }
     span {
       width: 112px;
