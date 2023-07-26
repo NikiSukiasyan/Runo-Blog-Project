@@ -3,6 +3,7 @@ import "../main/Main.scss";
 import "./AllArticles.scss";
 import { useArticlesContext } from "../../ArticlesContext";
 import Footer from "../footer/Footer";
+import { Link } from "react-router-dom";
 
 function AllArticles() {
   const { articles } = useArticlesContext();
@@ -64,7 +65,9 @@ function AllArticles() {
         {filteredArticles.length > 0 ? (
           filteredArticles.map((article) => (
             <div className="every-article" key={article.id}>
-              <img src={article.image} alt="rume" />
+              <Link to={`/EachArticle/${article.id}`}>
+                <img src={article.imageURL} alt="Blog" className="blog-image" />
+              </Link>
               <div className="blog-type">
                 <p>{article.type}</p>
               </div>
@@ -74,9 +77,13 @@ function AllArticles() {
                 <span className="every-description">{article.description}</span>
               </div>
               <div className="profile-information-container">
-                <img src={article.profile} alt={article.name} />
+                <img
+                  src={article.profileImageURL}
+                  alt="Profile"
+                  className="profile-image"
+                />
                 <div className="job-information">
-                  <p>{article.name}</p>
+                  <p>By {article.name}</p>
                   <span>{article.job}</span>
                 </div>
               </div>
@@ -93,4 +100,4 @@ function AllArticles() {
   );
 }
 
-export default AllArticles;
+export default React.memo(AllArticles);

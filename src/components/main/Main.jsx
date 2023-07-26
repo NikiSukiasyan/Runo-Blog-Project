@@ -4,6 +4,7 @@ import "./Main.scss";
 import app from "../../FireBase";
 import LoadingIcon from "../../images/loadingicon.jpeg";
 import { useArticlesContext } from "../../ArticlesContext";
+import { Link } from "react-router-dom";
 
 export const useActiveCategory = () => {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -21,6 +22,7 @@ function Main() {
   const { activeCategory, handleCategoryClick } = useActiveCategory();
   const { articles } = useArticlesContext();
   const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const [firstEightArticles, setFirstEightArticles] = useState([]);
 
@@ -29,14 +31,17 @@ function Main() {
       const dbRef = ref(getDatabase());
       onValue(dbRef, (snapshot) => {
         const data = snapshot.val();
-        if (data && Array.isArray(data)) {
+        if (data) {
           const filteredArticles =
             activeCategory === "All"
-              ? data
-              : data.filter((article) => article.type === activeCategory);
+              ? Object.values(data)
+              : Object.values(data).filter(
+                  (article) => article.type === activeCategory
+                );
 
           const firstEight = filteredArticles.slice(0, 8);
           setFirstEightArticles(firstEight);
+          setLoading(false);
         }
       });
     };
@@ -44,22 +49,14 @@ function Main() {
     fetchData();
   }, [activeCategory]);
 
-  const handleAllImagesLoaded = () => {
-    setImagesLoaded(true);
-  };
-
-  const renderArticles = firstEightArticles.length ? (
+  const renderArticles = loading ? (
+    <img src={LoadingIcon} className="loading-icon" alt="Loading Icon" />
+  ) : firstEightArticles.length ? (
     firstEightArticles.map((article) => (
       <div className="article" key={article.id}>
-        {!imagesLoaded && (
-          <img src={LoadingIcon} className="blog-item" alt="Loading Icon" />
-        )}
-        <img
-          src={article.image}
-          className={`blog-item ${imagesLoaded ? "loaded" : "hidden"}`}
-          onLoad={handleAllImagesLoaded}
-          alt={article.title}
-        />
+        <Link to={`/EachArticle/${article.id}`}>
+          <img src={article.imageURL} alt="Blog" className="blog-image" />
+        </Link>
         <div className="blog-type">
           <p>{article.type}</p>
         </div>
@@ -123,4 +120,4 @@ function Main() {
   );
 }
 
-export default Main;
+export default React.memo(Main);

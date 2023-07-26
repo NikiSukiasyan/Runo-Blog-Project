@@ -5,7 +5,6 @@ import TwitterIcon from "../../images/twitter.svg";
 import YoutubeIcon from "../../images/youtube.svg";
 import PinterestIcon from "../../images/pinterest.svg";
 import BehanceIcon from "../../images/behance.svg";
-import SearchIcon from "../../images/SearchIcon.svg";
 
 function Footer() {
   const openSocialMediaLink = (url) => {
@@ -64,8 +63,12 @@ function Footer() {
           </div>
         </div>
       </footer>
+      <div className="studio-container">
+        <p>2021 | RUNO Publisher Studio</p>
+        <span>Subscribe Now</span>
+      </div>
     </>
   );
 }
 
-export default Footer;
+export default React.memo(Footer);

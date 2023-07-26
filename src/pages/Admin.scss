@@ -1,0 +1,58 @@
+.greeting {
+  text-align: center;
+  color: #495057;
+  font-family: "Lora";
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 25px;
+  width: 310px;
+  margin-top: 20px;
+}
+.editor-container {
+  margin-top: 47px;
+  margin-left: 16px;
+}
+.name-input-container {
+  margin-left: 16px;
+  margin-top: 24px;
+  input {
+    margin-right: 33px;
+    padding-left: 7px;
+    height: 25px;
+    color: #495057;
+    border: none;
+    border-bottom: 1px solid #495057;
+    outline: none;
+    font-family: "Roboto-Medium";
+  }
+}
+.hint {
+  margin-bottom: 20px;
+  color: #495057;
+  font-family: "Lora";
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 700;
+}
+.add-blog {
+  margin-top: 40px;
+  width: 200px;
+  height: 51px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0px;
+  background-color: #191a1a;
+  font-family: "Roboto-Medium";
+  font-size: 20px;
+  color: #fff;
+  cursor: pointer;
+}
+.ql-editor {
+  p {
+    width: 100px;
+    height: 160px;
+    padding-bottom: 50px;
+  }
+}

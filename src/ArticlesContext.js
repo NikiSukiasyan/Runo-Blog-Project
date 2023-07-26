@@ -1,3 +1,4 @@
+// ArticlesContext.js
 import { createContext, useContext, useState, useEffect } from "react";
 import { getDatabase, ref, onValue } from "firebase/database";
 import app from "./FireBase";
@@ -14,8 +15,9 @@ export function ArticlesProvider({ children }) {
       const dbRef = ref(getDatabase());
       onValue(dbRef, (snapshot) => {
         const data = snapshot.val();
-        if (data && Array.isArray(data)) {
-          setArticles(data);
+        if (data) {
+          const articlesArray = Object.values(data);
+          setArticles(articlesArray);
         }
       });
     };
@@ -23,8 +25,12 @@ export function ArticlesProvider({ children }) {
     fetchData();
   }, []);
 
+  const updateArticles = (newArticles) => {
+    setArticles(newArticles);
+  };
+
   return (
-    <ArticlesContext.Provider value={{ articles }}>
+    <ArticlesContext.Provider value={{ articles, updateArticles }}>
       {children}
     </ArticlesContext.Provider>
   );

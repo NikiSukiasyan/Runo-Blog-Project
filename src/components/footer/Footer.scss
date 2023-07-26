@@ -100,3 +100,29 @@ footer {
     }
   }
 }
+.studio-container {
+  width: 100%;
+  background: #343a40;
+  display: flex;
+  align-items: center;
+  height: 100px;
+  gap: 945px;
+  p {
+    color: #e5e5e5;
+    font-family: "Lora";
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+  }
+  span {
+    color: #e5e5e5;
+    text-align: right;
+    font-family: "Lora";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    cursor: pointer;
+  }
+}

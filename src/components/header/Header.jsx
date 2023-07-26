@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.scss";
 import FacebookIcon from "../../images/facebook.svg";
 import TwitterIcon from "../../images/twitter.svg";
@@ -10,8 +10,20 @@ import { Link } from "react-router-dom";
 import Articles from "../../pages/Articles";
 
 function Header() {
+  const [searchInputVisible, setSearchInputVisible] = useState(false);
+  const [searchValue, setSearchValue] = useState("");
+
   const openSocialMediaLink = (url) => {
     window.open(url, "_blank");
+  };
+
+  const handleSearchInputChange = (event) => {
+    setSearchValue(event.target.value);
+  };
+
+  const handleSearchIconClick = () => {
+    setSearchInputVisible(!searchInputVisible);
+    setSearchValue("");
   };
 
   return (
@@ -57,7 +69,21 @@ function Header() {
                 onClick={() => openSocialMediaLink("https://www.behance.net")}
               />
             </div>
-            <img src={SearchIcon} alt="Search Icon" className="search-icon" />
+            <img
+              src={SearchIcon}
+              alt="Search Icon"
+              className="search-icon"
+              onClick={handleSearchIconClick}
+            />
+            {searchInputVisible && (
+              <input
+                type="text"
+                value={searchValue}
+                onChange={handleSearchInputChange}
+                placeholder="Search blog..."
+                className="search-input"
+              />
+            )}
           </nav>
         </div>
       </header>
@@ -65,4 +91,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default React.memo(Header);
